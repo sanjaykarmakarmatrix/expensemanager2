@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   api : {
     host : 'http://192.168.1.137:5000/',
-    prefix : 'api/'
+    prefix : 'api/',
+    hostUri : 'http://192.168.1.137/',
   },
 };
 

@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const models = require('../models');
 const userModel = models.User;
 const SHA512 = require('crypto-js/sha512');
@@ -98,6 +100,39 @@ const UserController = {
                 });
             });
         }
+    },
+
+    searchedUserList: async (req, res) => {
+        let searchText = req.body.search_text;
+        // console.log(searchText);
+
+        userModel.findAndCountAll({
+            where: {
+                status: '1',
+                name: {
+                    [Op.like]: '%' + searchText + '%'
+                }
+            },
+            attributes: ['id','name','email'],
+            order: [
+                ['name', 'asc']
+            ]
+        }).then((data) => {
+            res.send({
+                status: 'success',
+                code: 'UC-UL-0001',
+                details: {
+                    list: data
+                },
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.send({
+                status: 'error',
+                code: 'UC-UL-0002',
+                data: 'Something went wrong'
+            });
+        });
     },
 
 }

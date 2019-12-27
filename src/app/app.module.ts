@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { GroupComponent } from './group/group.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GroupComponent } from './group/group.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    GroupComponent
+    GroupComponent,
+    GroupDetailsComponent
   ],
   imports: [
     BrowserModule,

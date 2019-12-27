@@ -15,11 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       field: 'name'
     },
-    email: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      field: 'email'
-    },
     image: {
       type: DataTypes.STRING(255),
       allowNull: true,
@@ -67,11 +62,44 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
 
+  //To check email already exist or not
+  Group.checkNameExist = function (name) {
+    return this.count({
+      where: {
+        name: name
+      }
+    })
+  }
   Group.createGroup = function (formData) {
     return this.create({
       name: formData.name,
+      image: formData.image,
       created_at: moment().format("YYYY-MM-DD HH:mm:ss"),
       updated_at: moment().format("YYYY-MM-DD HH:mm:ss")
+    });
+  }
+
+  //Get group list
+  Group.groupList = function () {
+    return this.findAndCountAll({
+      where: {
+        status: '1'
+      },
+      attributes:['id','name','image'],
+      order: [
+        ['id', 'desc']
+      ]
+    });
+  }
+  
+  //Get group details
+  Group.groupDetails = function (id) {
+    return this.findOne({
+      where: {
+        id: id,
+        status: '1'
+      },
+      attributes:['id','name','image']
     });
   }
 

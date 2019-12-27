@@ -14,9 +14,17 @@ export class CommonService {
   login(formData) {
     return this.http.post(global.appUrl + 'login', formData);
   }
-  
+
   registration(formData) {
     return this.http.post(global.appUrl + 'register', formData);
+  }
+
+  createGroup(formData) {
+    return this.http.post(global.appUrl + 'group/create-group', formData);
+  }
+
+  groupList() {
+    return this.http.get(global.appUrl + 'group/list');
   }
 
 }

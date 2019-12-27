@@ -15,8 +15,17 @@ router.group('/api', (router) => {
     // User registration
     router.post("/register", userController.userRegistration);
 
-    // User registration
+    // Group registration
     router.post("/group/create-group", groupController.createGroup);
+
+    // Group list
+    router.get("/group/list", groupController.groupList);
+
+    // Group details
+    router.get("/group/details/:id", groupController.groupDetails);
+
+    // Matched user list (autocomplete)
+    router.post("/user/search-list", userController.searchedUserList);
 });
 
 module.exports = router;
