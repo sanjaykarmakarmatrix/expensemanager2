@@ -28,7 +28,7 @@ export class CommonService {
   }
 
   groupDetail(id) {
-    return this.http.get(global.appUrl + 'group/details/:id');
+    return this.http.get(global.appUrl + 'group/details/' + id);
   }
 
 }
