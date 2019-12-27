@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand">Expense Manager</a>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="auth.isLoggedIn()" routerLink="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!auth.isLoggedIn()" routerLink="/">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!auth.isLoggedIn()" routerLink="/register">Registration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
