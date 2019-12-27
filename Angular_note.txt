@@ -1,0 +1,95 @@
+Angular Uninstall & Install:
+---------------------------
+npm uninstall -g @angular/cli
+npm cache clean --force
+To verify: ng --version /* You will get the error message, then u have uninstalled */
+
+Using following commands to re-install :
+npm install -g @angular/cli
+npm install -g @angular/cli@latest	==>Latest version
+
+Install angular app:
+-------------------
+ng new projectname
+
+Install component:
+-----------------
+ng g component componentname
+
+Installing Bootstrap from NPM:
+-----------------------------
+npm install bootstrap
+npm i @ng-bootstrap/ng-bootstrap
+
+you also need to import NgbModule, in app.module.ts :
+Other modules in your application can simply import NgbModule app.module.ts:
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+imports: [
+	      BrowserModule,
+	       NgbModule
+	   ],
+
+and
+
+in angular.json:
+
+"styles": [
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+
+Generate service:
+----------------
+ng g service services/common
+
+Use of Reactive Form:
+--------------------
+https://www.techiediaries.com/angular-tutorial-reactive-forms/
+
+Open the src/app/app.module.ts file and update it accordingly:
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+imports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
+
+npm i angular-font-awesome
+
+
+https://stackblitz.com/edit/angular-8-registration-login-example?file=app%2Fregister%2Fregister.component.ts
+https://stackblitz.com/edit/angular-8-registration-login-example?file=app%2Flogin%2Flogin.component.ts
+
+
+npm i express-group-routes	==>for grouping
+
+npm i md5	==> password encription
+
+npm i moment ==>time
+
+npm i node-input-validator ==> Validation
+
+npm i cors ==> Cors issue overcome
+
+npm i sweetalert2 ==> sweet alert
+
+npm i jsonwebtoken => Authenticate
+
+npm i crypto-js	=> Crypto js
+
+npm i connect-busboy / npm i multer & npm i file-type => fs for file upload
+
+npm i is-base64 & npm i base64-img => Base64 image
+
+
+
+
+First Commit::
+git init
+git remote add origin
+git remote add origin https://github.com/sanjaykarmakarmatrix/expensemanager2.git
+git pull
+git pull origin master
