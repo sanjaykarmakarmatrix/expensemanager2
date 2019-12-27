@@ -13,15 +13,26 @@ export class GroupDetailsComponent implements OnInit {
   updateGroupForm: FormGroup;
   loading = false;
   submitted = false;
+  id: any = null;
+  groupDetailData: any = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.route.params.subscribe((params) => {
+      this.id = params.id;
+    });
+  }
 
   ngOnInit() {
+    this.commonService.groupDetail(this.id).subscribe((responseData: any) => {
+      this.groupDetailData = responseData.details;
+      console.log(this.groupDetailData);
+      return false;
+    });
   }
 
 }

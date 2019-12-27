@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { GroupComponent } from './group/group.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -30,6 +31,11 @@ const routes: Routes = [
       {
         path: 'group/create-group',
         component: GroupComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'group/detail/:id',
+        component: GroupDetailsComponent,
         canActivate: [AuthGuard]
       }
     ]

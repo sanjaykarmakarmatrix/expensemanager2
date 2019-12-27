@@ -19,7 +19,7 @@
                         <td><img src="{{imageUrl+group.image}}" alt="{{group.name}}" style="height: 40px;" /></td>
                         <td>{{group.name}}</td>
                         <td>
-                            <a routerLink="">Edit</a>&nbsp;
+                            <a [routerLink]="['/group/detail',group.id]">Edit</a>&nbsp;
                             <a routerLink="">Delete</a>
                         </td>
                     </tr>
