@@ -17,6 +17,8 @@ import { HeaderComponent } from './header/header.component';
 import { GroupComponent } from './group/group.component';
 import { GroupDetailsComponent } from './group-details/group-details.component';
 
+import {NgxPagerModule} from 'ngx-pager';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { GroupDetailsComponent } from './group-details/group-details.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    NgxPagerModule
   ],
   providers: [
     AuthService,

@@ -23,8 +23,8 @@ export class CommonService {
     return this.http.post(global.appUrl + 'group/create-group', formData);
   }
 
-  groupList() {
-    return this.http.get(global.appUrl + 'group/list');
+  groupList(page) {
+    return this.http.get(`${global.appUrl}group/list?page=${page}`);
   }
 
   groupDetail(id) {

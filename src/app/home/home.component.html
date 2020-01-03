@@ -2,6 +2,11 @@
     <div class="col-md-12">
         <a routerLink="/group/create-group" class="btn btn-primary">Create a group</a>
     </div>
+
+    <div *ngIf = "displaySpinner" ngClass="whole-area" id="whole-area" style="display: block;">
+        <div ngClass="loader" id="loader-1"></div>
+    </div>
+
     <div class="col-md-12">
         <div class="table-responsive">
             <table class="table">
@@ -25,5 +30,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            <ngx-pager [config]="pagerConfig" [totalrow]='totalRow'></ngx-pager>
+
         </div>
     </div>    

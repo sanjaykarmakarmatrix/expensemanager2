@@ -55,14 +55,14 @@ export class LoginComponent implements OnInit {
 
       if (responseData.status === 'success') {
         this.loginForm.reset();
-        Swal.fire({
-          title: 'Login',
-          text: responseData.details.msg,
-          icon: responseData.status,
-          showCancelButton: false,
-          confirmButtonText: 'OK',
-          cancelButtonText: ''
-        });
+        // Swal.fire({
+        //   title: 'Login',
+        //   text: responseData.details.msg,
+        //   icon: responseData.status,
+        //   showCancelButton: false,
+        //   confirmButtonText: 'OK',
+        //   cancelButtonText: ''
+        // });
         localStorage.setItem('_token', responseData.details.userData.access_token);
 
         let userInfo = JSON.stringify(responseData.details.userData);

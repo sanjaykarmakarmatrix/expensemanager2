@@ -80,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   //Get group list
-  Group.groupList = function () {
+  Group.groupList = function (offset, limit) {
     return this.findAndCountAll({
       where: {
         status: '1'
@@ -88,7 +88,9 @@ module.exports = (sequelize, DataTypes) => {
       attributes:['id','name','image'],
       order: [
         ['id', 'desc']
-      ]
+      ],
+      offset,
+      limit
     });
   }
   

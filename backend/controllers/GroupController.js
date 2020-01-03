@@ -78,16 +78,29 @@ const GroupController = {
     List of groups
     */
     groupList: (req, res) => {
-        groupModel.groupList().then((data) => {
+        let currentPageValue = req.query.page;
+        
+        // pagination section
+        let page = 0;
+        let perPage = 3;
+        if (currentPageValue) {
+            page = currentPageValue - 1;
+        }        
+        const offset = page * perPage;
+        const limit = perPage;
+        
+        groupModel.groupList(offset, limit).then((data) => {
             res.send({
                 status: 'success',
                 code: 'GC-GL-001',
                 details: {
                     imageFolder: 'backend/uploads/groups/',
+                    totalRows: data.count,
                     data: data.rows
                 }
             });
         }).catch((err) => {
+            console.log(err);
             res.send({
                 status: 'error',
                 code: 'GC-GL-002',
