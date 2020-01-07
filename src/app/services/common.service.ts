@@ -31,4 +31,8 @@ export class CommonService {
     return this.http.get(global.appUrl + 'group/details/' + id);
   }
 
+  groupEdit(id) {
+    return this.http.get(global.appUrl + 'group/edit/' + id);
+  }
+
 }

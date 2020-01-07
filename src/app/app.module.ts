@@ -18,6 +18,7 @@ import { GroupComponent } from './group/group.component';
 import { GroupDetailsComponent } from './group-details/group-details.component';
 
 import {NgxPagerModule} from 'ngx-pager';
+import { GroupEditComponent } from './group-edit/group-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NgxPagerModule} from 'ngx-pager';
     RegisterComponent,
     HeaderComponent,
     GroupComponent,
-    GroupDetailsComponent
+    GroupDetailsComponent,
+    GroupEditComponent
   ],
   imports: [
     BrowserModule,

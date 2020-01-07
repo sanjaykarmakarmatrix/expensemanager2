@@ -24,6 +24,9 @@ router.group('/api', (router) => {
     // Group details
     router.get("/group/details/:id", groupController.groupDetails);
 
+    // Group edit
+    router.get("/group/edit/:id", groupController.groupEdit);
+
     // Matched user list (autocomplete)
     router.post("/user/search-list", userController.searchedUserList);
 });

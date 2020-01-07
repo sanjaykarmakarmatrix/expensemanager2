@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.pagerConfig = {
       page: 1,
       perPage: 3,
-      displayPageCount: 3,
+      // displayPageCount: 3,
       firstLastView: true,
       redirect : {
         type : 'q', // q=query string

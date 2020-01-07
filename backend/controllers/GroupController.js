@@ -133,6 +133,31 @@ const GroupController = {
         });
     },
 
+    /*
+    Groups details
+    */
+    groupEdit: (req, res) => {
+        let id = req.params.id;
+
+        groupModel.groupEdit(id).then((data) => {
+            res.send({
+                status: 'success',
+                code: 'GC-GE-001',
+                details: {
+                    imageFolder: 'backend/uploads/groups/',
+                    data: data
+                }
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.send({
+                status: 'error',
+                code: 'GC-GE-002',
+                details: 'Something went wrong'
+            });
+        });
+    },
+
 }
 
 module.exports = GroupController;

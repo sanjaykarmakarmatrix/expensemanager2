@@ -105,6 +105,16 @@ module.exports = (sequelize, DataTypes) => {
     });
   }
 
+  //Group edit
+  Group.groupEdit = function (id) {
+    return this.findOne({
+      where: {
+        id: id
+      },
+      attributes:['id','name','image']
+    });
+  }
+
 
   return Group;
 };

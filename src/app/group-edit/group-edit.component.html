@@ -1,0 +1,32 @@
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+    <h2>{{title}}</h2>
+
+    <div *ngIf = "displaySpinner" ngClass="whole-area" id="whole-area" style="display: block;">
+        <div ngClass="loader" id="loader-1"></div>
+    </div>
+
+    <div class="col-md-6">
+        <form [formGroup]="updateGroupForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && updateGroupForm.controls['name'].errors }" value="{{showData?.name}}" />
+                <div *ngIf="submitted && updateGroupForm.controls['name'].errors" class="invalid-feedback">
+                    <div *ngIf="updateGroupForm.controls['name'].errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Image</label>
+                <input type="file" class="form-control" formControlName="image" (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" [ngClass]="{ 'is-invalid': submitted && updateGroupForm.controls['image'].errors }" />
+                <img src="{{imageUrl}}{{showData?.image}}" style="height: 100px;" />
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Update
+                </button>
+                &nbsp;
+                <a class="btn btn-primary" routerLink="/dashboard">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
