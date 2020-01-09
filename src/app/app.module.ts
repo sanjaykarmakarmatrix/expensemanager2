@@ -17,8 +17,19 @@ import { HeaderComponent } from './header/header.component';
 import { GroupComponent } from './group/group.component';
 import { GroupDetailsComponent } from './group-details/group-details.component';
 
-import {NgxPagerModule} from 'ngx-pager';
+import { NgxPagerModule } from 'ngx-pager';
 import { GroupEditComponent } from './group-edit/group-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatFormFieldModule, MatInputModule, MatButtonModule, MatMenuModule, MatIconModule, MatAutocompleteModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+import { AdditemComponent } from './additem/additem.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +41,8 @@ import { GroupEditComponent } from './group-edit/group-edit.component';
     HeaderComponent,
     GroupComponent,
     GroupDetailsComponent,
-    GroupEditComponent
+    GroupEditComponent,
+    AdditemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +53,23 @@ import { GroupEditComponent } from './group-edit/group-edit.component';
     FormsModule,
     ReactiveFormsModule,
 
-    NgxPagerModule
+    NgxPagerModule,
+
+    BrowserAnimationsModule,
+
+    MatFormFieldModule,MatInputModule,MatButtonModule,MatMenuModule,MatIconModule,MatAutocompleteModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,MatRippleModule,
+    MatListModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,
     AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AdditemComponent]
 })
 export class AppModule { }
