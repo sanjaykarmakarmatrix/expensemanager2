@@ -11,27 +11,47 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
   styleUrls: ['./additem.component.css']
 })
 export class AdditemComponent implements OnInit {
-  searchTerm = new FormControl();
+  searchTerm  = new FormControl();
   searchResult: string[] = null;
   filteredOptions: Observable<string[]>;
   searchText: any = null;
+  // search_text: any = null;
+  member: any = {
+    id: '',
+    name: ''
+  };
 
   constructor(
     private commonService: CommonService,
     private dialogRef: MatDialogRef<AdditemComponent>, @Inject(MAT_DIALOG_DATA) data
-  ) { }
-
-  ngOnInit() {
-
+  ) {
     this.searchTerm.valueChanges.subscribe(searchText => {
-      if (searchText.length > 1) {
-        this.commonService.userList(searchText).subscribe((responseData: any) => {
-          console.log(responseData.details);
+      if (searchText.length > 0) {
+        this.commonService.userList({'search_text': searchText}).subscribe((responseData: any) => {
+          // console.log(responseData.details.list.rows);
+          this.searchResult = responseData.details.list.rows;
         });
       }
     });
+   }
+
+   selectUser(id) {
+    let selectUser = this.searchResult.find((item) => {
+      return item.id = id;
+    });
+    this.member.user_id  = id;
+    this.member.name  = name;
+    // console.log(this.member);
   }
 
+  ngOnInit() {
+  }
+
+  
+  save()
+	{
+		this.dialogRef.close(this.member);
+	}
   onNoClick(): void {
     this.dialogRef.close();
   }

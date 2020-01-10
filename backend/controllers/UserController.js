@@ -103,8 +103,8 @@ const UserController = {
     },
 
     searchedUserList: async (req, res) => {
-        // let searchText = req.body.search_text;
-        console.log(req.body);
+        let searchText = req.body.search_text;
+         console.log(searchText);
 
         userModel.findAndCountAll({
             where: {

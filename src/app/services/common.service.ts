@@ -36,8 +36,8 @@ export class CommonService {
   }
 
   userList(searchText) {
-    // return this.http.post(`${global.appUrl}user/search-list`, searchText);
-    return this.http.post(global.appUrl + 'user/search-list', searchText);
+    return this.http.post(`${global.appUrl}user/search-list`, searchText);
+    // return this.http.post(global.appUrl + 'user/search-list', searchText);
   }
 
 }

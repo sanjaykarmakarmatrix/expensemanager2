@@ -24,6 +24,7 @@ export class GroupEditComponent implements OnInit {
   showData: any = null;
   imageUrl: any = null;
   displaySpinner = true;
+  member = [];
 
   myControl = new FormControl();
   // optionValues: string[] = ['One', 'Two', 'Three'];
