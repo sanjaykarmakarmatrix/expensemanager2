@@ -26,8 +26,8 @@ export class GroupEditComponent implements OnInit {
   displaySpinner = true;
 
   myControl = new FormControl();
-  optionValues: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  // optionValues: string[] = ['One', 'Two', 'Three'];
+  // filteredOptions: Observable<string[]>;
   options: any;
 
   animal: string;

@@ -35,8 +35,9 @@ export class CommonService {
     return this.http.get(global.appUrl + 'group/edit/' + id);
   }
 
-  userList(formData) {
-    return this.http.post(`${global.appUrl}user/search-list`, formData);
+  userList(searchText) {
+    // return this.http.post(`${global.appUrl}user/search-list`, searchText);
+    return this.http.post(global.appUrl + 'user/search-list', searchText);
   }
 
 }
