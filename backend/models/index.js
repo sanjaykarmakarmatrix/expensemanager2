@@ -10,10 +10,12 @@ const config = require(__dirname + '/../config/config.json')[env];
 //model declaration
 const User = require('./user');
 const Group = require('./group');
+const GroupUser = require('./groupuser');
 
 const db = {
   'User': User,
-  'Group': Group
+  'Group': Group,
+  'GroupUser': GroupUser
 };
 
 let sequelize;

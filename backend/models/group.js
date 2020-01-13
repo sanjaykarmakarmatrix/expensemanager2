@@ -60,6 +60,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Group.associate = function(models) {
     // associations can be defined here
+    Group.hasMany(models.GroupUser, {
+      as : 'members', 
+      foreignKey : 'group_id'
+    });
   };
 
   //To check email already exist or not
@@ -115,6 +119,20 @@ module.exports = (sequelize, DataTypes) => {
     });
   }
 
+  //Group update
+  Group.groupUpdate = function (updateData, id) {
+    console.log(updateData);
+    
+    return this.update(updateData, {
+      where: {
+        id: id
+      },
+      include: [ {
+        association: 'members',
+      }
+    ]
+    });
+  }
 
   return Group;
 };

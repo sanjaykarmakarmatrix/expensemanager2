@@ -27,12 +27,14 @@ export class GroupEditComponent implements OnInit {
   member = [];
 
   myControl = new FormControl();
-  // optionValues: string[] = ['One', 'Two', 'Three'];
-  // filteredOptions: Observable<string[]>;
   options: any;
 
-  animal: string;
-  name: string;
+  group: any = {
+    id: '',
+    name: '',
+    updated_at : new Date(),
+    members : []
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,17 +42,20 @@ export class GroupEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      // console.log(this.optionValues);
-
-      // console.log(params.get('id'));
       this.groupId = params.get('id');
+
       this.commonService.groupEdit(this.groupId).subscribe((responseData: any) => {
         this.showData = responseData.details.data;
-        console.log(this.showData);
+        // console.log(this.showData);
+
+        this.group.id = responseData.details.data.id;
+        this.group.name = responseData.details.data.name;
+
         this.imageUrl = global.hostUrl + 'expensemanager2/' + responseData.details.imageFolder;
         this.displaySpinner = false;
       });
@@ -83,20 +88,30 @@ export class GroupEditComponent implements OnInit {
     const dialogRef = this.dialog.open(AdditemComponent, {
       width: '500px',
       height: '300px',
-      data: {name: this.name, animal: this.animal}
+      // data: {name: this.name, animal: this.animal}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-      console.log(this.animal);
+      if (result !== undefined && result.user_id !== '') {
+        result.group_id = this.groupId;
+        this.group.members.push(result);
+      }
     });
   }
 
+  removeItem(index) {
+    this.group.members.splice(index, 1);
+  }
 
+  onSubmit(groupId) {
+    // this.submitted = true;
 
-  onSubmit() {
-    this.submitted = true;
+    this.group.name = this.updateGroupForm.value.name;
+
+    this.commonService.groupUpdate(this.group, groupId).subscribe((response) => {
+      console.log(response);
+      // this.router.navigate(['/dashboard']);
+    });
   }
 
 }

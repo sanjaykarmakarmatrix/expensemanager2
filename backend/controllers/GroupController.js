@@ -134,7 +134,7 @@ const GroupController = {
     },
 
     /*
-    Groups details
+    Groups Edit
     */
     groupEdit: (req, res) => {
         let id = req.params.id;
@@ -153,6 +153,36 @@ const GroupController = {
             res.send({
                 status: 'error',
                 code: 'GC-GE-002',
+                details: 'Something went wrong'
+            });
+        });
+    },
+
+    /*
+    Groups Update
+    */
+    groupUpdate: (req, res) => {
+        let id = req.params.id;
+        let formData = req.body;
+
+        let insertData = {
+            name : formData.name,
+            ...formData
+        }
+        // console.log(insertData);
+        
+
+        groupModel.groupUpdate(insertData, id).then((responseData) => {
+            res.send({
+                status: 'success',
+                code: 'GC-GU-001',
+                details: responseData
+            });
+        }).catch((err) => {
+            console.log(err);
+            res.send({
+                status: 'error',
+                code: 'GC-GU-002',
                 details: 'Something went wrong'
             });
         });
